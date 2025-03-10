@@ -33,12 +33,11 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
 
       if (responseData.containsKey('Bookings')) {
         setState(() {
-          // ✅ Filter only pending bookings
           bookings =
               List<Map<String, dynamic>>.from(responseData['Bookings'])
                   .where(
                     (booking) => booking['status'] == 'Pending',
-                  ) // ✅ Keep only pending ones
+                  ) 
                   .toList();
           isLoading = false;
         });
@@ -79,7 +78,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                processApproval(action, bookingUuid); // ✅ Send UUID here
+                processApproval(action, bookingUuid); 
               },
               child: Text(
                 action,
@@ -102,13 +101,12 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
       Uri.parse(apiUrl),
       headers: {"Content-Type": "application/json"},
       body: jsonEncode({
-        "status": action, // ✅ Send status directly
+        "status": action, 
       }),
     );
 
     if (response.statusCode == 200) {
       setState(() {
-        // ✅ Create a new list excluding the updated booking
         bookings =
             bookings
                 .where((booking) => booking['uuid'] != bookingUuid)
@@ -165,7 +163,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
                                     () => showConfirmationDialog(
                                       context,
                                       "Confirmed",
-                                      booking['uuid'], // ✅ Pass UUID
+                                      booking['uuid'], 
                                     ),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.green,
@@ -181,7 +179,7 @@ class _ApprovalsScreenState extends State<ApprovalsScreen> {
                                     () => showConfirmationDialog(
                                       context,
                                       "Rejected",
-                                      booking['uuid'], // ✅ Pass UUID
+                                      booking['uuid'], 
                                     ),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.red,
