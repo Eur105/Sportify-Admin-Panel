@@ -11,7 +11,7 @@ class BookingsScreen extends StatefulWidget {
 
 class _BookingsScreenState extends State<BookingsScreen> {
   List<Map<String, dynamic>> bookings = [];
-  String selectedFilter = 'Confirmed'; // Default tab
+  String selectedFilter = 'Confirmed'; 
   TextEditingController searchController = TextEditingController();
   bool isLoading = false;
 
@@ -111,7 +111,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
           isLoading
               ? Center(
                 child: CircularProgressIndicator(),
-              ) // Show loading spinner
+              ) 
               : Expanded(
                 child: ListView.builder(
                   itemCount: bookings.length,
