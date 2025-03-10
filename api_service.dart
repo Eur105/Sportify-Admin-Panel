@@ -4,7 +4,7 @@ import 'dart:io';
 
 class ApiService {
   static const String baseUrl =
-      "YOUR_BACKEND_URL_HERE"; // Replace with actual backend URL
+      "YOUR_BACKEND_URL_HERE"; 
 
   static Future<Map<String, dynamic>> loginAdmin(
     String email,
@@ -22,7 +22,7 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
-        return jsonDecode(response.body); // Successful login
+        return jsonDecode(response.body); 
       } else {
         return {"error": "Invalid email or password"};
       }
@@ -43,7 +43,7 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
-        return jsonDecode(response.body); // Successful response
+        return jsonDecode(response.body); 
       } else {
         return {"error": "Failed to fetch dashboard data"};
       }
@@ -146,7 +146,7 @@ class ApiService {
     required String name,
     required String email,
     required String phone,
-    File? profileImage, // ✅ Fix: Now `File` is recognized
+    File? profileImage, 
   }) async {
     try {
       var request = http.MultipartRequest(
